@@ -9,10 +9,8 @@
   </div>
 
   <div class='field'>
-    <%= render '/refinery/admin/wysiwyg',
-                :f => f,
-                :fields => [:answer],
-                :object => "faqs/faq" -%>
+    <%= f.label :answer -%>
+    <%= f.text_area :answer, :class => 'wymeditor widest' -%>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
