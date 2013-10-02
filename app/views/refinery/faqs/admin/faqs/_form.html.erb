@@ -3,6 +3,8 @@
               :object => @faq,
               :include_object_name => true %>
 
+  <%= render 'refinery/admin/pages/locale_picker', :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
+
   <div class='field'>
     <%= f.label :question -%>
     <%= f.text_field :question, :class => 'larger widest' -%>
