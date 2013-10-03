@@ -2,13 +2,22 @@
   <span class='title'>
     <%= faq.question %>
 
+    <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+      <span class='locales'>
+        <% faq.translations.each do |translation| %>
+          <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                      refinery.edit_faqs_admin_faq_path(faq, :switch_locale => translation.locale),
+                      :class => 'locale' if translation.name.present? %>
+        <% end %>
+      </span>
+    <% end %>
   </span>
   <span class='actions'>
-    
+
     <%= link_to refinery_icon_tag("application_go.png"), refinery.faqs_faq_path(faq),
         :title => t('.view_live_html'),
         :target => "_blank" %>
-    
+
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_faqs_admin_faq_path(faq),
          :title => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.faqs_admin_faq_path(faq),
