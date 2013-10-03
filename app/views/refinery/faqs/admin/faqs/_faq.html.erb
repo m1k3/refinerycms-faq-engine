@@ -7,7 +7,7 @@
         <% faq.translations.each do |translation| %>
           <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
                       refinery.edit_faqs_admin_faq_path(faq, :switch_locale => translation.locale),
-                      :class => 'locale' if translation.name.present? %>
+                      :class => 'locale' if translation.question.present? %>
         <% end %>
       </span>
     <% end %>
