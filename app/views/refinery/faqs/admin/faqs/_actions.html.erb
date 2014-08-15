@@ -9,17 +9,28 @@
                  :class => "add_icon" %>
   </li>
 <% if !searching? && ::Refinery::Faqs::Admin::FaqsController.sortable? && ::Refinery::Faqs::Faq.any? %>
-  <li>
-    <%= link_to t('.reorder', :what => "Faqs"),
-                 refinery.faqs_admin_faqs_path,
-                 :id => "reorder_action",
-                 :class => "reorder_icon" %>
+  <% if @sort_index %>
+    <li>
+      <%= link_to t('.reorder', :what => "Faqs"),
+                   refinery.faqs_admin_faqs_path,
+                   :id => "reorder_action",
+                   :class => "reorder_icon" %>
 
-    <%= link_to t('.reorder_done', :what => "Faqs"),
-                 refinery.faqs_admin_faqs_path,
-                 :id => "reorder_action_done",
-                 :style => "display: none;",
-                 :class => "reorder_icon" %>
-  </li>
+      <%= link_to t('.reorder_done', :what => "Faqs"),
+                   refinery.faqs_admin_faqs_path,
+                   :id => "reorder_action_done",
+                   :style => "display: none;",
+                   :class => "reorder_icon" %>
+    </li>
+    <li>
+      <%= link_to t('pagination_index', scope: 'refinery.admin'), refinery.faqs_admin_faqs_path,
+                   :class => "go_icon" %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to t('reorder_index', scope: 'refinery.admin'), refinery.sort_index_faqs_admin_faqs_path,
+                   :class => "go_icon" %>
+    </li>
+  <% end %>
 <% end %>
 </ul>

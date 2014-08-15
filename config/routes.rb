@@ -11,6 +11,7 @@ Refinery::Core::Engine.routes.append do
       resources :faqs, :except => :show do
         collection do
           post :update_positions
+          get :sort_index
         end
       end
     end

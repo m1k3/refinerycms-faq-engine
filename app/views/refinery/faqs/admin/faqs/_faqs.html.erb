@@ -1,2 +1,2 @@
-<%= will_paginate @faqs if Refinery::Faqs::Admin::FaqsController.pageable? %>
+<%= will_paginate @faqs if Refinery::Faqs::Admin::FaqsController.pageable? && @sort_index != true %>
 <%= render 'sortable_list' %>
